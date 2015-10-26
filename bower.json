@@ -1,0 +1,27 @@
+{
+  "name": "cs",
+  "version": "1.0.0",
+  "homepage": "https://github.com/victormelnyk/code_step",
+  "authors": [
+    "Victor Melnyk"
+  ],
+  "description": "Code Step",
+  "main": "index.html",
+  "moduleType": [
+    "globals"
+  ],
+  "keywords": [
+    "angular"
+  ],
+  "license": "MIT",
+  "ignore": [
+    "**/.*",
+    "node_modules",
+    "bower_components",
+    "test",
+    "tests"
+  ],
+  "dependencies": {
+    "bootstrap": "~3.3.5"
+  }
+}
