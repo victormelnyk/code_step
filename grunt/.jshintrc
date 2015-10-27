@@ -57,6 +57,7 @@
     "it":             false,
     "module":         false,
     "require":        false,
-    "tv4":            false
+
+    "cs":             false
   }
 }
