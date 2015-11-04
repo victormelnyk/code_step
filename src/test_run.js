@@ -1,5 +1,5 @@
 function runTest() {
-  cs.initClass('TestClass');
+  cs.wrapClasses(['TestClass']);
   runTestObject();
   runTestObject();
 }
