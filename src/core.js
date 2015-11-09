@@ -1,9 +1,10 @@
 cs.Core = Core;
 
 function Core() {
-  var
-    self = this,
-    classWrapper = new cs.ClassWrapper();
+  var self = this;
+
+  self.classWrapper = new cs.ClassWrapper(self);
+  self.stepManager = new cs.StepManager(self);
 
   self.wrapClasses = wrapClasses;
 
@@ -15,6 +16,6 @@ function Core() {
   }
 
   function wrapClasses(classeNames) {
-    classWrapper.wrapClasses(classeNames);
+    self.classWrapper.wrapClasses(classeNames);
   }
 }

@@ -1,9 +1,7 @@
 cs.ClassWrapper = ClassWrapper;
 
-function ClassWrapper() {
-  var
-    self = this,
-    fObjectNumber = 0;
+function ClassWrapper(core) {
+  var self = this;
 
   self.wrapClasses = wrapClasses;
 
@@ -23,8 +21,7 @@ function ClassWrapper() {
       var object = Object.create(constructor.prototype);
       constructor.apply(object, arguments);
 
-      fObjectNumber++;
-      wrapObject(object, fObjectNumber);
+      wrapObject(object, core.stepManager.getNewObjectNumber());
       return object;
     };
   }

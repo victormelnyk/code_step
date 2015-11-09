@@ -8,10 +8,10 @@ window.TestClass = function(param1, param2) {
     key2: 'value2'
   };
 
-  this.propertyDate = new Date();                         //! date
+  /*!!this.propertyDate = new Date();                         //! date
   this.propertyUndefined = undefined;                     //! undefined
   this.propertyNull = null;                               //! null
-  this.propertyNan = NaN;                                 //! NaN
+  this.propertyNan = NaN;                                 //! NaN*/
 };
 
 window.TestClass.prototype.method1 = function() {
