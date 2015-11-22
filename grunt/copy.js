@@ -34,8 +34,8 @@ module.exports = {
   devLibs: {
     files: [
       {
-        src: 'bower_components/jquery/dist/jquery.js',
-        dest: 'dist/libs/jquery/jquery.js'
+        src: 'bower_components/angular/angular.js',
+        dest: 'dist/libs/angular/angular.js'
       },
       {
         expand: true,
@@ -43,7 +43,6 @@ module.exports = {
         src: [
           'css/bootstrap.css',
           'css/bootstrap-theme.css',
-          'js/bootstrap.js',
           'fonts/*'
         ],
         dest: 'dist/libs/bootstrap/',
@@ -55,8 +54,8 @@ module.exports = {
   prodLibs: {
     files: [
       {
-        src: 'bower_components/jquery/dist/jquery.min.js',
-        dest: 'dist/libs/jquery/jquery.min.js'
+        src: 'bower_components/angular/dist/angular.min.js',
+        dest: 'dist/libs/angular/angular.min.js'
       },
       {
         expand: true,
@@ -64,7 +63,6 @@ module.exports = {
         src: [
           'css/bootstrap.min.css',
           'css/bootstrap-theme.min.css',
-          'js/bootstrap.min.js',
           'fonts/*'
         ],
         dest: 'dist/libs/bootstrap/',

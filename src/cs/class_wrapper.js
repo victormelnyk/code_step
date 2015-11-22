@@ -1,6 +1,6 @@
 cs.ClassWrapper = ClassWrapper;
 
-function ClassWrapper(core) {
+function ClassWrapper(statistic) {
   var self = this;
 
   self.wrapClasses = wrapClasses;
@@ -21,7 +21,7 @@ function ClassWrapper(core) {
       var object = Object.create(constructor.prototype);
       constructor.apply(object, arguments);
 
-      wrapObject(object, core.stepManager.getNewObjectNumber());
+      wrapObject(object, statistic.getNextObjectStatistic());
       return object;
     };
   }
@@ -32,37 +32,37 @@ function ClassWrapper(core) {
     }
   }
 
-  function wrapObject(object, objectNumber) {
+  function wrapObject(object, objectStat) {
 
     function setProperty(propName) {
-      console.debug(objectNumber, 'setProperty', propName);
+      console.debug(objectStat.index, 'setProperty', propName);
 
       object.cs[propName] = object[propName];
 
       Object.defineProperty(object, propName, {
         get: function() {
-          console.debug(objectNumber, 'get', propName, this.cs[propName]);
+          console.debug(objectStat.index, 'get', propName, this.cs[propName]);
           return this.cs[propName];
         },
         set: function(value) {
-          console.debug(objectNumber, 'set', propName, value, this.cs[propName]);
+          console.debug(objectStat.index, 'set', propName, value, this.cs[propName]);
           this.cs[propName] = value;
         }
       });
     }
 
     function setFunction(funcName) {
-      console.debug(objectNumber, 'setFunction', funcName);
+      console.debug(objectStat.index, 'setFunction', funcName);
 
       object.cs[funcName] = object[funcName];
 
       object[funcName] = function() {
-        console.debug(objectNumber, 'call', funcName, arguments);
+        console.debug(objectStat.index, 'call', funcName, arguments);
         object.cs[funcName].apply(object, arguments);
       };
     }
 
-    console.debug(objectNumber, 'codeStepInit');
+    console.debug(objectStat.index, 'codeStepInit');
 
     object.cs = {};
 

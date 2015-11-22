@@ -8,21 +8,34 @@
   <!-- src -->
   <!-- include: "type": "css", "files": ["**/*.css", "!libs/**/*"] -->
 </head>
-<body>
+<body
+  ng-app="appModule"
+  ng-controller="AppController as app"
+>
   <br>
   <div class="container">
     <div class="row">
       <div class="col-xs-12">
-        <button type="button" class="btn btn-success" onclick="runTest()">Success</button>
+        <button type="button" class="btn btn-success" ng-click="app.ni()">Success</button>
+      </div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">{{app.tic}}</div>
+    </div>
+    <div class="row">
+      <div class="col-xs-12">
+        <pre>{{app.cs.statistic | json}}</pre>
       </div>
     </div>
   </div>
 
   <!-- libs -->
-  <!-- include: "type": "js", "files": ["libs/jquery/*.js", "libs/**/*.js"] -->
-  <!-- src -->
-  <!-- include: "type": "js", "files": ["code_step.js", "**/*.js", "!run.js", "!test_*.js", "!libs/**/*"] -->
-  <!-- include: "type": "js", "files": ["run.js"] -->
-  <!-- include: "type": "js", "files": ["test_*.js"] -->
+  <!-- include: "type": "js", "files": ["libs/angular/*.js", "libs/**/*.js"] -->
+  <!-- cs -->
+  <!-- include: "type": "js", "files": ["cs/code_step.js", "cs/*.js"] -->
+  <!-- data -->
+  <!-- include: "type": "js", "files": ["data/*.js"] -->
+  <!-- ui -->
+  <!-- include: "type": "js", "files": ["ui/*_module.js", "ui/*.js"] -->
 </body>
 </html>
