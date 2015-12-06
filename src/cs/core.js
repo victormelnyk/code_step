@@ -3,9 +3,9 @@ cs.Core = Core;
 function Core() {
   var self = this;
 
-  self.statistic = new cs.Statistic();
-  self.classWrapper = new cs.ClassWrapper(self.statistic);
-  self.stepManager = new cs.StepManager(self.statistic);
+  self.stat = new cs.Stat();
+  self.classWrapper = new cs.ClassWrapper(self.stat);
+  self.stepManager = new cs.StepManager(self.stat);
 
   self.wrapClasses = wrapClasses;
 

@@ -1,27 +1,44 @@
-cs.Statistic = Statistic;
+cs.Stat = Stat;
 
-function Statistic() {
+function Stat() {
   var self = this;
 
-  self.objectStatistics = [];
+  self.objectStats = {};
+  self.objectStatList = [];
+  self.step = 0;
 
-  self.getNextObjectStatistic = getNextObjectStatistic;
+  self.addMemberStat = addMemberStat;
+  self.getMemberStat = getMemberStat;
+  self.getNextObjectStat = getNextObjectStat;
+  self.takeSnapshot = takeSnapshot;
 
   return self;
 
-  function getNextObjectStatistic() {
-    var
-      index = self.objectStatistics.length,
-      objectStatistic = new cs.ObjectStatistic(index);
+  function addMemberStat(objectStat, memberName) {
+    var memberStat = new cs.MemberStat(memberName);
 
-    self.objectStatistics.push(objectStatistic);
-
-    return objectStatistic;
+    objectStat.snapshots[self.step].members[memberName] = memberStat;
+    return memberStat;
   }
-}
 
-cs.ObjectStatistic = ObjectStatistic;
+  function getMemberStat() {
+    return objectStat.snapshots[self.step].members[memberName];
+  }
 
-function ObjectStatistic(index) {
-  this.index = index;
+  function getNextObjectStat(className) {
+    var objectStat = new cs.ObjectStat(self.objectStatList.length);
+
+    if (!self.objectStats[className]) {
+      self.objectStats[className] = [];
+    }
+
+    self.objectStats[className].push(objectStat);
+    self.objectStatList.push(objectStat);
+
+    return objectStat;
+  }
+
+  function takeSnapshot(processFunc) {
+    self.objectStatList.forEach(processFunc);
+  }
 }
