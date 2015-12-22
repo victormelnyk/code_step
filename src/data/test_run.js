@@ -14,7 +14,8 @@ function runTestObject() {
 
   var value = testObject.propertyString;
   console.log('Get propertyString');
-  testObject.propertyString = 'value updated';
+  testObject.propertyString = 'value updated1';
+  testObject.propertyString = 'value updated2';
   console.log('Set propertyString');
 
   /*value = testObject.propertyNumber;
@@ -43,10 +44,19 @@ function runTestObject() {
   //!! testObject.propertyUndefined = undefined;                     //! undefined
   //!! testObject.propertyNull = null;                               //! null
   //!! testObject.propertyNan = NaN;                                 //! NaN
+  */
+  testObject.method1();
+  console.log('Call method1');
+
+  value = testObject.propertyString;
+  console.log('Get propertyString');
+  testObject.propertyString = 'value updated3';
+  console.log('Set propertyString');
 
   testObject.method1();
   console.log('Call method1');
-  testObject.method2('value1');
+
+  /*testObject.method2('value1');
   console.log('Call method2');
   testObject.method3('value1', 'value2');
   console.log('Call method3');*/

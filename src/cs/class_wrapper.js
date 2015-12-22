@@ -10,9 +10,7 @@ function ClassWrapper(stat) {
   function processObject(object, objectStat) {
     console.debug(objectStat.index, 'processObject');
 
-    objectStat.object = object;
-
-    if (object.cs) {
+    if (!object.cs) {
       object.cs = {};
     }
 
@@ -21,7 +19,10 @@ function ClassWrapper(stat) {
         continue;
       }
 
-      if (typeof(object[propName]) === 'function') {
+      var propType = object.cs[propName] ? typeof(object.cs[propName]) :
+        typeof(object[propName]);
+
+      if (propType === 'function') {
         if (object.cs[propName] === undefined) {
           wrapMethod(object, objectStat, propName);
         }
@@ -37,11 +38,11 @@ function ClassWrapper(stat) {
   function takeMemberSnapshot(object, objectStat, memberName) {
     var memberStat = stat.addMemberStat(objectStat, memberName);
 
-    memberStat.value = object.cs[propName];
+    memberStat.values.push(object.cs[memberName]);
   }
 
-  function takeObjectSnapshot(objectStat) {
-    processObject(objectStat.object, objectStat);
+  function takeObjectSnapshot(objectBundle) {
+    processObject(objectBundle.object, objectBundle.objectStat);
   }
 
   function wrapClasse(className) {
@@ -58,7 +59,7 @@ function ClassWrapper(stat) {
       var object = Object.create(constructor.prototype);
       constructor.apply(object, arguments);
 
-      processObject(object, stat.getNextObjectStat(className));
+      processObject(object, stat.getNextObjectStat(className, object));
       return object;
     };
   }
@@ -79,12 +80,15 @@ function ClassWrapper(stat) {
     Object.defineProperty(object, memberName, {
       get: function() {
         console.debug(objectStat.index, 'get', memberName, this.cs[memberName]);
-        var memberStat = getMemberStat(objectStat, memberName);
+        var memberStat = stat.getMemberStat(objectStat, memberName);
         memberStat.getCount++;
         return this.cs[memberName];
       },
       set: function(value) {
         console.debug(objectStat.index, 'set', memberName, value, this.cs[memberName]);
+        var memberStat = stat.getMemberStat(objectStat, memberName);
+        memberStat.setCount++;
+        memberStat.values.push(value);
         this.cs[memberName] = value;
       }
     });
