@@ -2,10 +2,14 @@ cs.runTest = function() {
   cs.run();
   cs.wrapClasses(['TestClass']);
   runTestObject();
-  //!!runTestObject();
+  // todo runTestObject();
 };
 
 function runTestObject() {
+  console.log(1);
+}
+
+function runTestObject2() {
   //log function TestClass(param1, param2) {
   var testObject = new window.TestClass('value1', 'value2');
   console.log('Created testObject');
@@ -18,7 +22,8 @@ function runTestObject() {
   testObject.propertyString = 'value updated2';
   console.log('Set propertyString');
 
-  /*value = testObject.propertyNumber;
+  /*
+  value = testObject.propertyNumber;
   console.log('Get propertyNumber');
   testObject.propertyNumber = 10;
   console.log('Set propertyNumber');
@@ -56,7 +61,8 @@ function runTestObject() {
   testObject.method1();
   console.log('Call method1');
 
-  /*testObject.method2('value1');
+  /*
+  testObject.method2('value1');
   console.log('Call method2');
   testObject.method3('value1', 'value2');
   console.log('Call method3');*/

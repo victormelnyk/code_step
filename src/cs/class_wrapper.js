@@ -19,8 +19,8 @@ function ClassWrapper(stat) {
         continue;
       }
 
-      var propType = object.cs[propName] ? typeof(object.cs[propName]) :
-        typeof(object[propName]);
+      var propType = object.cs[propName] ? typeof (object.cs[propName]) :
+        typeof (object[propName]);
 
       if (propType === 'function') {
         if (object.cs[propName] === undefined) {
@@ -45,7 +45,7 @@ function ClassWrapper(stat) {
     processObject(objectBundle.object, objectBundle.objectStat);
   }
 
-  function wrapClasse(className) {
+  function wrapClass(className) {
     var constructor = window[className];
 
     if (!constructor) {
@@ -64,9 +64,9 @@ function ClassWrapper(stat) {
     };
   }
 
-  function wrapClasses(classeNames) {
-    for (var i = 0; i < classeNames.length; i++) {
-      wrapClasse(classeNames[i]);
+  function wrapClasses(classNames) {
+    for (var i = 0; i < classNames.length; i++) {
+      wrapClass(classNames[i]);
     }
   }
 

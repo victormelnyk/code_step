@@ -8,7 +8,7 @@ window.TestClass = function(param1, param2) {
     key2: 'value2'
   };
 
-  /*!!
+  /* todo fix
   this.propertyBoolean = true;                            //! boolean
   this.propertyDate = new Date();                         //! date
   this.propertyUndefined = undefined;                     //! undefined

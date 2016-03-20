@@ -1,6 +1,6 @@
 angular.module('appModule', [
-  //!external modules
+  // external modules
 
-  //!internal modules
+  // internal modules
 
 ]);

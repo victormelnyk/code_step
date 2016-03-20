@@ -16,7 +16,7 @@ function Core() {
 
   }
 
-  function wrapClasses(classeNames) {
-    self.classWrapper.wrapClasses(classeNames);
+  function wrapClasses(classNames) {
+    self.classWrapper.wrapClasses(classNames);
   }
 }
