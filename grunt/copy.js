@@ -14,10 +14,9 @@ module.exports = {
   dev: {
     options: {
       process: function(content, srcpath) {
-        return '(function() {\n' +
-          '\'use strict\';\n' +
-          content + '\n' +
-          '})();';
+        return '\'use strict\';\n' +
+          content + '\n';
+          //'})();';
       }
     },
     files: [

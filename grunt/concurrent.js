@@ -4,9 +4,7 @@ module.exports = {
   },
 
   dev1: [
-    'clean',
-    'jshint:all',
-    'jscs:all'
+    'clean'
   ],
   dev2: [
     'copy:all',
@@ -19,15 +17,13 @@ module.exports = {
   ],
 
   devJs1: [
-    'jshint:all'
   ],
   devJs2: [
     'copy:dev'
   ],
 
   prod1: [
-    'clean',
-    'jshint:all'
+    'clean'
   ],
   prod2: [
     'copy:all',

@@ -10,8 +10,6 @@ module.exports = {
       'src/**/*.js'
     ],
     tasks: [
-      'newer:jshint',
-      'newer:jscs',
       'newer:copy:dev'
     ]
   },

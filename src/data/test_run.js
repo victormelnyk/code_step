@@ -5,8 +5,34 @@ cs.runTest = function() {
   // todo runTestObject();
 };
 
+
+function getAllFuncs(obj) {
+  var props = [];
+
+  do {
+    console.log(Object.getOwnPropertyNames(obj));
+    props = props.concat(Object.getOwnPropertyNames(obj));
+  } while (obj = Object.getPrototypeOf(obj));
+
+  // return props.sort().filter(function(e, i, arr) {
+  //   if (e!=arr[i+1] && typeof obj[e] == 'function') return true;
+  // });
+}
+
 function runTestObject() {
-  console.log(1);
+  var ob = new TestClass2();
+
+  Object.keys(ob).forEach(key => {
+    console.log('prop', key, ob[key]);
+  });
+
+  Object.getOwnPropertyNames(Object.getPrototypeOf(ob)).forEach(key => {
+    console.log('method', key);
+  });
+
+  console.log(getAllFuncs(ob));
+
+  console.log(ob);
 }
 
 function runTestObject2() {
